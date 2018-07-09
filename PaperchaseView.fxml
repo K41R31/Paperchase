@@ -1,0 +1,782 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.Double?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Polyline?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="rootPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="444.0" style="-fx-background-color: TRANSPARENT;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Paperchase.PaperchaseController">
+   <children>
+      <ImageView fx:id="backgroundImage" fitHeight="900.0" fitWidth="444.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <image>
+            <Image url="@Ressources/mockup.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="contentPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="682.0" prefWidth="384.0" AnchorPane.leftAnchor="28.0" AnchorPane.topAnchor="107.0">
+         <children>
+            <ImageView fitHeight="682.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@Ressources/backgrund.jpg" />
+               </image>
+            </ImageView>
+            <AnchorPane fx:id="startPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <StackPane onMouseClicked="#startQuestClicked" onMouseEntered="#startQuestEntered" onMouseExited="#startQuestExited" AnchorPane.bottomAnchor="120.0" AnchorPane.leftAnchor="65.0" AnchorPane.rightAnchor="65.0">
+                     <children>
+                        <Rectangle fx:id="startQuestRect" arcHeight="5.0" arcWidth="5.0" disable="true" fill="TRANSPARENT" height="45.0" stroke="WHITE" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="2.0" width="252.0">
+                           <StackPane.margin>
+                              <Insets top="4.0" />
+                           </StackPane.margin>
+                        </Rectangle>
+                        <Text fx:id="startQuestText" disable="true" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="START A QUEST" textAlignment="CENTER" wrappingWidth="250.0">
+                           <font>
+                              <Font name="Kiona Regular" size="30.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </StackPane>
+                  <Text fx:id="levelText" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="LV6" textAlignment="CENTER" wrappingWidth="200.0" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="177.0">
+                     <font>
+                        <Font name="Kiona Regular" size="60.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="percentageText" fill="#ff3636" layoutX="170.0" layoutY="267.0" strokeType="OUTSIDE" strokeWidth="0.0" text="81%" textAlignment="CENTER" wrappingWidth="70.0" AnchorPane.leftAnchor="155.0" AnchorPane.topAnchor="236.0">
+                     <font>
+                        <Font name="Kiona Regular" size="26.0" />
+                     </font>
+                  </Text>
+                  <StackPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="400.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="400.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Ressources/questIconFrame.png" />
+                           </image>
+                        </ImageView>
+                        <HBox alignment="CENTER" spacing="60.0" StackPane.alignment="CENTER">
+                           <children>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#togglePlayerProfile" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Ressources/questIcon.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#togglePlayerProfile" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Ressources/questIcon.png" />
+                                 </image>
+                              </ImageView>
+                              <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="10.0" onMouseClicked="#togglePlayerProfile" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Ressources/questIcon.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                     </children>
+                  </StackPane>
+                  <Text fx:id="testLvlUp" fill="#868686" onMouseClicked="#testLvlUpClicked" onMouseEntered="#testLvlUpEntered" onMouseExited="#testLvlUpExited" opacity="0.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TEST LVL UP" AnchorPane.bottomAnchor="70.0" AnchorPane.leftAnchor="125.0">
+                     <font>
+                        <Font name="Kiona Regular" size="22.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="menuOpener" fitHeight="25.0" fitWidth="16.0" layoutX="10.0" onMouseClicked="#menuOpenerClicked" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="30.0">
+               <image>
+                  <Image url="@Ressources/menuIcon.png" />
+               </image>
+            </ImageView>
+            <AnchorPane fx:id="playerProfilePane" disable="true" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="682.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@Ressources/backgrundBlurred.jpg" />
+                     </image>
+                  </ImageView>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0">
+                           <children>
+                              <Line endX="15.0" startX="5.0" startY="10.0" />
+                              <Line endX="15.0" endY="20.0" startX="5.0" startY="10.0" />
+                           </children>
+                        </AnchorPane>
+                        <Text onMouseClicked="#playerProfileMenuBack" strokeType="OUTSIDE" strokeWidth="0.0" text="zurück">
+                           <font>
+                              <Font name="Segoe UI" size="18.0" />
+                           </font>
+                        </Text>
+                        <Region maxWidth="-Infinity" minWidth="-Infinity" prefWidth="70.0" />
+                        <Text fill="#e1e1e1" strokeType="OUTSIDE" strokeWidth="0.0" text="Quests">
+                           <font>
+                              <Font name="Kiona Regular" size="25.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </HBox>
+                  <Line endX="384.0" AnchorPane.topAnchor="70.0" />
+                  <VBox alignment="TOP_CENTER" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="134.0">
+                     <children>
+                        <ImageView fitHeight="150.0" fitWidth="200.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Ressources/wireframeMan.png" />
+                           </image>
+                        </ImageView>
+                        <Text fx:id="playerName" fill="#dadada" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler Name" textAlignment="CENTER">
+                           <font>
+                              <Font name="Kiona Regular" size="38.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets top="50.0" />
+                           </VBox.margin>
+                        </Text>
+                        <HBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="267.0">
+                           <children>
+                              <Text fx:id="playerName1" fill="#dadada" strokeType="OUTSIDE" strokeWidth="0.0" text="LV6" textAlignment="CENTER">
+                                 <font>
+                                    <Font name="Kiona Regular" size="40.0" />
+                                 </font>
+                              </Text>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <StackPane prefHeight="150.0" prefWidth="200.0">
+                                 <children>
+                                    <ProgressBar fx:id="levelProgressBarProfile" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" progress="0.0" />
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="progress">
+                                       <font>
+                                          <Font name="Segoe UI" size="12.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                        <TabPane maxWidth="-Infinity" minWidth="-Infinity" prefWidth="350.0" tabClosingPolicy="UNAVAILABLE" tabMaxHeight="20.0" tabMaxWidth="105.0" tabMinHeight="20.0" tabMinWidth="105.0">
+                          <tabs>
+                            <Tab text="Chronik">
+                                 <content>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #222222;">
+                                       <children>
+                                          <HBox spacing="10.0">
+                                             <children>
+                                                <Text fill="#dadada" strokeType="OUTSIDE" strokeWidth="0.0" text="20.07.2018">
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#dadada" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Helfen im Flüchtlingsheim">
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <Region HBox.hgrow="ALWAYS" />
+                                                <Text fill="#dadada" layoutX="92.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bald">
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="20.0" layoutY="30.0" spacing="10.0">
+                                             <children>
+                                                <Text fill="#dadada" strokeType="OUTSIDE" strokeWidth="0.0" text="21.07.2018">
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#dadada" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Park aufräumen">
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <Region HBox.hgrow="ALWAYS" />
+                                                <Text fill="#dadada" layoutX="92.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="bald">
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                          <HBox layoutX="20.0" layoutY="30.0" spacing="10.0">
+                                             <children>
+                                                <Text fill="#dadada" strokeType="OUTSIDE" strokeWidth="0.0" text="10.07.2018">
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text fill="#dadada" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Tafel helfen">
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                                <Region HBox.hgrow="ALWAYS" />
+                                                <Text fill="#dadada" layoutX="92.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="aktiv">
+                                                   <font>
+                                                      <Font name="Segoe UI" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                       <padding>
+                                          <Insets left="10.0" right="20.0" top="20.0" />
+                                       </padding>
+                                    </VBox>
+                                 </content>
+                            </Tab>
+                            <Tab text="Über">
+                                 <content>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #222222;" />
+                                 </content>
+                            </Tab>
+                              <Tab text="Freunde">
+                                 <content>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" style="-fx-background-color: #222222;" />
+                                 </content>
+                              </Tab>
+                          </tabs>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                           <VBox.margin>
+                              <Insets bottom="20.0" />
+                           </VBox.margin>
+                        </TabPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <Polyline fx:id="levelBarStroke" fill="TRANSPARENT">
+               <points>
+                  <Double fx:value="-50.0" />
+                  <Double fx:value="-40.0" />
+                  <Double fx:value="50.0" />
+                  <Double fx:value="-40.0" />
+                  <Double fx:value="0.0" />
+                  <Double fx:value="60.0" />
+                  <Double fx:value="-50.0" />
+                  <Double fx:value="-40.0" />
+               </points>
+            </Polyline>
+            <Polyline fx:id="levelBarProgress" fill="TRANSPARENT" strokeWidth="5.0">
+              <points>
+                <Double fx:value="-50.0" />
+                <Double fx:value="-40.0" />
+                <Double fx:value="50.0" />
+                <Double fx:value="-40.0" />
+                <Double fx:value="0.0" />
+                <Double fx:value="60.0" />
+                <Double fx:value="-50.0" />
+                <Double fx:value="-40.0" />
+              </points>
+               <stroke>
+                  <LinearGradient endX="0.6333333333333334" endY="1.0" startX="0.5">
+                     <stops>
+                        <Stop color="#fe7a1d" />
+                        <Stop color="#fe7a1d" offset="0.007662835249042145" />
+                        <Stop color="#ff3334" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </stroke>
+            </Polyline>
+            <Rectangle fill="TRANSPARENT" height="170.0" onMouseClicked="#togglePlayerProfile" rotate="45.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="170.0" AnchorPane.leftAnchor="107.0" AnchorPane.topAnchor="135.0" />
+            <VBox fx:id="menuPane" alignment="TOP_CENTER" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="617.0" prefWidth="0.0" visible="false" AnchorPane.topAnchor="66.0">
+               <children>
+                  <StackPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="154.0" prefWidth="384.0" style="-fx-background-color: #3a55b2;">
+                     <children>
+                        <ImageView fx:id="menuItem1" cache="true" fitHeight="1.0" fitWidth="1.0" onMouseClicked="#profileFromMenu" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@Ressources/menuProfil.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <StackPane layoutX="10.0" layoutY="76.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="154.0" prefWidth="384.0" style="-fx-background-color: #a22b83;">
+                     <children>
+                        <ImageView fx:id="menuItem2" fitHeight="1.0" fitWidth="1.0" onMouseClicked="#toggleFullMap" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@Ressources/menuKarte.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <StackPane layoutX="10.0" layoutY="846.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="154.0" prefWidth="384.0" style="-fx-background-color: #c83444;">
+                     <children>
+                        <ImageView fx:id="menuItem3" fitHeight="1.0" fitWidth="1.0" onMouseClicked="#friendsMenuOpen" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@Ressources/menuFreunde.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+                  <StackPane layoutX="10.0" layoutY="1000.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="154.0" prefWidth="384.0" style="-fx-background-color: #cb6b17;">
+                     <children>
+                        <ImageView fx:id="menuItem4" fitHeight="1.0" fitWidth="1.0" onMouseClicked="#questsFromMenu" pickOnBounds="true" preserveRatio="true" visible="false">
+                           <image>
+                              <Image url="@Ressources/menuQuests.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </StackPane>
+               </children>
+            </VBox>
+            <AnchorPane fx:id="friendsPane" disable="true" style="-fx-background-color: #222222;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0">
+                     <children>
+                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0">
+                           <children>
+                              <Line endX="15.0" startX="5.0" startY="10.0" />
+                              <Line endX="15.0" endY="20.0" startX="5.0" startY="10.0" />
+                           </children>
+                        </AnchorPane>
+                        <Text onMouseClicked="#friendsMenuBack" strokeType="OUTSIDE" strokeWidth="0.0" text="zurück">
+                           <font>
+                              <Font name="Segoe UI" size="18.0" />
+                           </font>
+                        </Text>
+                        <Region maxWidth="-Infinity" minWidth="-Infinity" prefWidth="70.0" />
+                        <Text fill="#e1e1e1" strokeType="OUTSIDE" strokeWidth="0.0" text="Freunde">
+                           <font>
+                              <Font name="Kiona Regular" size="25.0" />
+                           </font>
+                        </Text>
+                     </children>
+                     <padding>
+                        <Insets top="20.0" />
+                     </padding>
+                  </HBox>
+                  <Line endX="384.0" AnchorPane.topAnchor="70.0" />
+                  <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" AnchorPane.topAnchor="70.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" spacing="20.0">
+                           <children>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Ressources/profileIivon.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler Name">
+                                       <font>
+                                          <Font name="Kiona Regular" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#727272" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LV3">
+                                       <font>
+                                          <Font name="Kiona Regular" size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" spacing="20.0">
+                           <children>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Ressources/profileIivon.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler Name">
+                                       <font>
+                                          <Font name="Kiona Regular" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#727272" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LV1">
+                                       <font>
+                                          <Font name="Kiona Regular" size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="100.0" spacing="20.0">
+                           <children>
+                              <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@Ressources/profileIivon.png" />
+                                 </image>
+                              </ImageView>
+                              <VBox alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Spieler Name">
+                                       <font>
+                                          <Font name="Kiona Regular" size="24.0" />
+                                       </font>
+                                    </Text>
+                                    <Text fill="#727272" layoutX="10.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LV5">
+                                       <font>
+                                          <Font name="Kiona Regular" size="24.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets left="20.0" />
+                           </padding>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="questsPane" disable="true" visible="false">
+               <children>
+                  <ImageView fitHeight="682.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Ressources/backgrundBlurred.jpg" />
+                     </image>
+                  </ImageView>
+                  <VBox fx:id="startQuestPaneBackgr" prefHeight="200.0" prefWidth="100.0" spacing="20.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="70.0">
+                           <children>
+                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0">
+                                 <children>
+                                    <Line endX="15.0" startX="5.0" startY="10.0" />
+                                    <Line endX="15.0" endY="20.0" startX="5.0" startY="10.0" />
+                                 </children>
+                              </AnchorPane>
+                              <Text onMouseClicked="#questMenuBack" strokeType="OUTSIDE" strokeWidth="0.0" text="zurück">
+                                 <font>
+                                    <Font name="Segoe UI" size="18.0" />
+                                 </font>
+                              </Text>
+                              <Region maxWidth="-Infinity" minWidth="-Infinity" prefWidth="70.0" />
+                              <Text fill="#e1e1e1" strokeType="OUTSIDE" strokeWidth="0.0" text="Quests">
+                                 <font>
+                                    <Font name="Kiona Regular" size="25.0" />
+                                 </font>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets top="20.0" />
+                           </padding>
+                        </HBox>
+                        <Line endX="384.0">
+                           <VBox.margin>
+                              <Insets top="-20.0" />
+                           </VBox.margin>
+                        </Line>
+                        <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="592.0">
+                           <children>
+                              <VBox spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" onMouseClicked="#toggleQuest" prefHeight="50.0" spacing="20.0" style="-fx-background-color: #222222;">
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#toggleQuest" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Ressources/AddQuestIcon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fill="#c9c9c9" strokeType="OUTSIDE" strokeWidth="0.0" text="Park aufräumen">
+                                             <font>
+                                                <Font name="Segoe UI" size="25.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="30.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <VBox fx:id="questDetailsPane" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="0.0" spacing="10.0" visible="false">
+                                       <children>
+                                          <Text fill="#d3d3d3" strokeType="OUTSIDE" strokeWidth="0.0" text="Gruppenaufgabe">
+                                             <font>
+                                                <Font name="Segoe UI" size="20.0" />
+                                             </font>
+                                          </Text>
+                                          <Text layoutX="110.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Der Central Park wurde gestern von Fußballfans stark verdreckt schließe dich mit einer Gruppe zusammen und säubere ihn." wrappingWidth="265.0">
+                                             <font>
+                                                <Font name="Segoe UI" size="20.0" />
+                                             </font>
+                                          </Text>
+                                          <Text fill="#ff5d26" strokeType="OUTSIDE" strokeWidth="0.0" text="125 xp">
+                                             <font>
+                                                <Font name="Kiona Regular" size="20.0" />
+                                             </font>
+                                          </Text>
+                                          <StackPane maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#toggleStartQuestPane" prefWidth="90.0">
+                                             <children>
+                                                <Rectangle fx:id="startQuestRect111" arcHeight="5.0" arcWidth="5.0" disable="true" fill="TRANSPARENT" height="30.0" stroke="WHITE" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="2.0" width="90.0">
+                                                   <StackPane.margin>
+                                                      <Insets top="1.0" />
+                                                   </StackPane.margin>
+                                                </Rectangle>
+                                                <Text disable="true" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="STARTEN" textAlignment="CENTER">
+                                                   <font>
+                                                      <Font name="Kiona Regular" size="15.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </StackPane>
+                                       </children>
+                                       <padding>
+                                          <Insets left="80.0" />
+                                       </padding>
+                                       <VBox.margin>
+                                          <Insets bottom="-5.0" top="-5.0" />
+                                       </VBox.margin>
+                                    </VBox>
+                                    <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" spacing="20.0" style="-fx-background-color: #222222;">
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Ressources/AddQuestIcon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fill="#c9c9c9" strokeType="OUTSIDE" strokeWidth="0.0" text="Tafel aushelfen">
+                                             <font>
+                                                <Font name="Segoe UI" size="25.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="30.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" spacing="20.0" style="-fx-background-color: #222222;">
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Ressources/AddQuestIcon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fill="#c9c9c9" strokeType="OUTSIDE" strokeWidth="0.0" text="Nachhilfe">
+                                             <font>
+                                                <Font name="Segoe UI" size="25.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="30.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                    <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" spacing="20.0" style="-fx-background-color: #222222;">
+                                       <children>
+                                          <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@Ressources/AddQuestIcon.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Text fill="#c9c9c9" strokeType="OUTSIDE" strokeWidth="0.0" text="Stadt säubern">
+                                             <font>
+                                                <Font name="Segoe UI" size="25.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="30.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="10.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="startQuestPane" alignment="TOP_CENTER" disable="true" spacing="20.0" style="-fx-background-color: #222222;" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <Text fill="#e1e1e1" strokeType="OUTSIDE" strokeWidth="0.0" text="Park aufräumen">
+                                       <font>
+                                          <Font name="Kiona Regular" size="30.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </Text>
+                                    <ImageView fitHeight="538.0" fitWidth="334.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@Ressources/mappi.jpg" />
+                                       </image>
+                                    </ImageView>
+                                    <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="334.0">
+                                       <VBox.margin>
+                                          <Insets top="-15.0" />
+                                       </VBox.margin>
+                                       <children>
+                                          <Text fill="#ff682b" strokeType="OUTSIDE" strokeWidth="0.0" text="Dauer: 1 Stunde">
+                                             <font>
+                                                <Font name="Segoe UI" size="15.0" />
+                                             </font>
+                                          </Text>
+                                          <Region HBox.hgrow="ALWAYS" />
+                                          <Text fill="#ff682b" layoutX="10.0" layoutY="26.0" strokeType="OUTSIDE" strokeWidth="0.0" text="125 xp, Gutschein">
+                                             <font>
+                                                <Font name="Segoe UI" size="15.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                    </HBox>
+                                    <Text fill="#c6c6c6" strokeType="OUTSIDE" strokeWidth="0.0" text="Der Central Park wurde diese Woche von Fußballfans stark verdreckt schließe dich mit einer Gruppe zusammen und säubere ihn." textAlignment="CENTER" wrappingWidth="265.0">
+                                       <font>
+                                          <Font name="Segoe UI" size="20.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets top="-15.0" />
+                                       </VBox.margin>
+                                    </Text>
+                                    <StackPane maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#questAdded" prefWidth="120.0">
+                                       <children>
+                                          <Rectangle fx:id="startQuestRect1111" arcHeight="5.0" arcWidth="5.0" disable="true" fill="TRANSPARENT" height="35.0" stroke="#ff6e21" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="2.0" width="120.0">
+                                             <StackPane.margin>
+                                                <Insets top="1.0" />
+                                             </StackPane.margin>
+                                          </Rectangle>
+                                          <Text disable="true" fill="#ff682b" strokeType="OUTSIDE" strokeWidth="0.0" text="LOS GEHTS" textAlignment="CENTER">
+                                             <font>
+                                                <Font name="Kiona Regular" size="18.0" />
+                                             </font>
+                                          </Text>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets top="-5.0" />
+                                       </VBox.margin>
+                                    </StackPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="fullMapPane" disable="true" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ImageView fitHeight="682.0" fitWidth="384.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@Ressources/fullMap.jpg" />
+                     </image>
+                  </ImageView>
+                  <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="20.0" prefWidth="20.0" rotate="90.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="10.0">
+                     <children>
+                        <Line endX="15.0" startX="5.0" startY="10.0" />
+                        <Line endX="15.0" endY="20.0" startX="5.0" startY="10.0" />
+                     </children>
+                  </AnchorPane>
+                  <Text onMouseClicked="#toggleFullMap" rotate="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="zurück" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="50.0">
+                     <font>
+                        <Font name="Segoe UI" size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="loginRoot" maxHeight="-Infinity" minHeight="-Infinity" prefHeight="682.0" style="-fx-background-color: #222222;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <VBox fx:id="loginPane" alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <ImageView fitHeight="500.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@Ressources/logo.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="#ff5d26" strokeType="OUTSIDE" strokeWidth="0.0" text="PAPER CHASE">
+                           <font>
+                              <Font name="Kiona Regular" size="35.0" />
+                           </font>
+                        </Text>
+                        <TextField fx:id="emailField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="234.0" promptText="E-Mail">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </TextField>
+                        <PasswordField fx:id="passwordField" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="234.0" promptText="Passwort">
+                           <font>
+                              <Font name="Segoe UI" size="14.0" />
+                           </font>
+                        </PasswordField>
+                        <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="234.0">
+                           <children>
+                              <CheckBox fx:id="saveLoginChecker" mnemonicParsing="false" text="Login merken" textFill="#d7d7d7">
+                                 <font>
+                                    <Font name="Segoe UI" size="14.0" />
+                                 </font>
+                              </CheckBox>
+                           </children>
+                        </HBox>
+                        <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="234.0">
+                           <children>
+                              <StackPane>
+                                 <children>
+                                    <Rectangle fx:id="startQuestRect1" arcHeight="5.0" arcWidth="5.0" disable="true" fill="TRANSPARENT" height="30.0" stroke="WHITE" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="2.0" width="130.0">
+                                       <StackPane.margin>
+                                          <Insets top="1.0" />
+                                       </StackPane.margin>
+                                    </Rectangle>
+                                    <Text disable="true" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Registrieren" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Kiona Regular" size="15.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                              <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                              <StackPane layoutX="10.0" layoutY="10.0" onMouseClicked="#loginClicked">
+                                 <children>
+                                    <Rectangle fx:id="startQuestRect11" arcHeight="5.0" arcWidth="5.0" disable="true" fill="TRANSPARENT" height="30.0" stroke="WHITE" strokeMiterLimit="0.0" strokeType="INSIDE" strokeWidth="2.0" width="80.0">
+                                       <StackPane.margin>
+                                          <Insets top="1.0" />
+                                       </StackPane.margin>
+                                    </Rectangle>
+                                    <Text disable="true" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Login" textAlignment="CENTER">
+                                       <font>
+                                          <Font name="Kiona Regular" size="15.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </StackPane>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="statusBar" fitHeight="14.0" fitWidth="372.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="8.0">
+               <image>
+                  <Image url="@Ressources/statusList.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+      <Circle fill="TRANSPARENT" onMouseClicked="#exit" onMousePressed="#exit" radius="35.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="187.0" AnchorPane.rightAnchor="187.0" AnchorPane.topAnchor="802.0" />
+   </children>
+</AnchorPane>
