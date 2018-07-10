@@ -28,10 +28,11 @@ class IOData {
         return result;
     }
 
-    boolean isAlreadyRegistered(String email, String password) {
+    String isAlreadyRegistered(String email) {
         for (String profile : profiles) {
-            if (profile.equals(email + ",," + password)) return true;
+            int seperatorIndex = profile.indexOf(",,");
+            if (profile.substring(0, seperatorIndex).equals(email)) return profile.substring(seperatorIndex+2, profile.length());
         }
-        return false;
+        return "false";
     }
 }

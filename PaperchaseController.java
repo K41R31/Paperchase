@@ -35,13 +35,13 @@ public class PaperchaseController  {
     @FXML
     private Polyline levelBarStroke;
     @FXML
-    private Text startQuestText, playerName, percentageText, levelText, testLvlUp;
+    private Text startQuestText, playerName, percentageText, levelText, testLvlUp, errorText;
     @FXML
     private Rectangle startQuestRect;
     @FXML
-    private VBox menuPane, loginPane, questDetailsPane, startQuestPane, startQuestPaneBackgr;
+    private VBox menuPane, loginPane, questDetailsPane, startQuestPane, questOverviewPane;
     @FXML
-    private ImageView menuOpener, menuItem1, menuItem2, menuItem3, menuItem4, statusBar;
+    private ImageView menuOpener, menuItem0,  menuItem1, menuItem2, menuItem3, menuItem4, statusBar, loginBackground, startQuestPaneBackgr;
     @FXML
     private AnchorPane rootPane, playerProfilePane, questsPane, friendsPane, fullMapPane, loginRoot;
     @FXML
@@ -158,41 +158,27 @@ public class PaperchaseController  {
             menuPane.setVisible(true);
             menuPane.setDisable(false);
             Timeline openMenu = new Timeline();
-            openMenu.getKeyFrames().addAll(new KeyFrame(new Duration(500),
+            openMenu.getKeyFrames().addAll(new KeyFrame(new Duration(300),
                     new KeyValue(menuPane.prefWidthProperty(), 384, Interpolator.EASE_BOTH),
                     new KeyValue(menuOpener.layoutXProperty(), 358, Interpolator.EASE_BOTH),
                     new KeyValue(menuOpener.scaleXProperty(), -1, Interpolator.EASE_BOTH))
             );
             openMenu.setOnFinished(event -> {
-                menuItem1.setVisible(true);
+                menuItem0.setFitWidth(384);
                 menuItem1.setFitWidth(384);
-                menuItem1.setFitHeight(154);
-                menuItem2.setVisible(true);
                 menuItem2.setFitWidth(384);
-                menuItem2.setFitHeight(154);
-                menuItem3.setVisible(true);
                 menuItem3.setFitWidth(384);
-                menuItem3.setFitHeight(154);
-                menuItem4.setVisible(true);
                 menuItem4.setFitWidth(384);
-                menuItem4.setFitHeight(154);
             });
             openMenu.play();
         } else {
-            menuItem1.setVisible(false);
+            menuItem0.setFitWidth(1);
             menuItem1.setFitWidth(1);
-            menuItem1.setFitHeight(1);
-            menuItem2.setVisible(false);
             menuItem2.setFitWidth(1);
-            menuItem2.setFitHeight(1);
-            menuItem3.setVisible(false);
             menuItem3.setFitWidth(1);
-            menuItem3.setFitHeight(1);
-            menuItem4.setVisible(false);
             menuItem4.setFitWidth(1);
-            menuItem4.setFitHeight(1);
             Timeline closeMenu = new Timeline();
-            closeMenu.getKeyFrames().addAll(new KeyFrame(new Duration(500),
+            closeMenu.getKeyFrames().addAll(new KeyFrame(new Duration(300),
                     new KeyValue(menuPane.prefWidthProperty(), 0, Interpolator.EASE_BOTH),
                     new KeyValue(menuOpener.layoutXProperty(), 10, Interpolator.EASE_BOTH),
                     new KeyValue(menuOpener.scaleXProperty(), 1, Interpolator.EASE_BOTH))
@@ -212,14 +198,14 @@ public class PaperchaseController  {
             openQuest.getKeyFrames().addAll(new KeyFrame(new Duration(500),
                     new KeyValue(questDetailsPane.prefHeightProperty(), 246, Interpolator.EASE_BOTH))
             );
-            openQuest.setOnFinished(event -> questDetailsPane.setVisible(true));
+            openQuest.setOnFinished(event -> fadeIn(questDetailsPane));
             openQuest.play();
         } else {
             Timeline openQuest = new Timeline();
             openQuest.getKeyFrames().addAll(new KeyFrame(new Duration(500),
                     new KeyValue(questDetailsPane.prefHeightProperty(), 0, Interpolator.EASE_BOTH))
             );
-            questDetailsPane.setVisible(false);
+            fadeOut(questDetailsPane);
             openQuest.play();
         }
     }
@@ -238,20 +224,20 @@ public class PaperchaseController  {
 
     @FXML
     private void startQuestClicked() {
-        questsPane.setVisible(true);
+        fadeIn(questsPane);
         questsPane.setDisable(false);
     }
 
     @FXML
     private void questsFromMenu() {
-        questsPane.setVisible(true);
+        fadeIn(questsPane);
         questsPane.setDisable(false);
         toggleMenu();
     }
 
     @FXML
     private void profileFromMenu() {
-        playerProfilePane.setVisible(true);
+        fadeIn(playerProfilePane);
         playerProfilePane.setDisable(false);
         toggleMenu();
     }
@@ -263,48 +249,50 @@ public class PaperchaseController  {
 
     @FXML
     private void togglePlayerProfile() {
-        playerProfilePane.setVisible(true);
+        fadeIn(playerProfilePane);
         playerProfilePane.setDisable(false);
     }
 
     @FXML
     private void questMenuBack() {
         if (startQuestPane.isVisible()) {
-            startQuestPane.setVisible(false);
+            fadeOut(startQuestPane);
             startQuestPane.setDisable(true);
-            startQuestPaneBackgr.setStyle("-fx-background-color: TRANSPARENT");
+            fadeIn(questOverviewPane);
+            fadeOut(startQuestPaneBackgr);
         } else {
-            questsPane.setVisible(false);
+            fadeOut(questsPane);
             questsPane.setDisable(true);
         }
     }
 
     @FXML
     private void playerProfileMenuBack() {
+        fadeOut(playerProfilePane);
         playerProfilePane.setDisable(true);
-        playerProfilePane.setVisible(false);
     }
 
     @FXML
     private void friendsMenuOpen() {
         friendsPane.setDisable(false);
-        friendsPane.setVisible(true);
+        fadeIn(friendsPane);
         toggleMenu();
     }
 
     @FXML
     private void friendsMenuBack() {
         friendsPane.setDisable(true);
-        friendsPane.setVisible(false);
+        fadeOut(friendsPane);
     }
 
     @FXML
     private void questAdded() {
+        fadeOut(startQuestPane);
         startQuestPane.setDisable(true);
-        startQuestPane.setVisible(false);
         questsPane.setDisable(true);
-        questsPane.setVisible(false);
-        startQuestPaneBackgr.setStyle("-fx-background-color: TRANSPARENT");
+        fadeOut(questsPane);
+        fadeIn(questOverviewPane);
+        fadeOut(startQuestPaneBackgr);
     }
 
     @FXML
@@ -324,23 +312,31 @@ public class PaperchaseController  {
 
     @FXML
     private void toggleStartQuestPane() {
-        if (!startQuestPane.isVisible()) {
+        if (startQuestPane.getOpacity() == 0) {
             startQuestPane.setDisable(false);
-            startQuestPane.setVisible(true);
-            startQuestPaneBackgr.setStyle("-fx-background-color: #222222");
+            fadeIn(startQuestPane);
+            fadeOut(questOverviewPane);
+            fadeIn(startQuestPaneBackgr);
         } else {
             startQuestPane.setDisable(true);
-            startQuestPane.setVisible(false);
-            startQuestPaneBackgr.setStyle("-fx-background-color: TRANSPARENT");
+            fadeOut(startQuestPane);
+            fadeIn(questOverviewPane);
+            fadeOut(startQuestPaneBackgr);
         }
     }
 
     @FXML
     private void loginClicked() {
-        if (ioData.isAlreadyRegistered(emailField.getText(), passwordField.getText())) {
-            toggleLoginPane();
+        String password = ioData.isAlreadyRegistered(emailField.getText());
+        if (password.equals("false")) {
+            errorText.setText("Es besteht kein Account mit diesem Namen.");
+            fadeIn(errorText);
         } else {
-            System.out.println("Not Registered");
+            if (passwordField.getText().equals(password)) toggleLoginPane();
+            else {
+                errorText.setText("Falsches Passwort.");
+                fadeIn(errorText);
+            }
         }
     }
 
@@ -348,9 +344,10 @@ public class PaperchaseController  {
         Timeline closeLogin = new Timeline();
         closeLogin.getKeyFrames().addAll(
                 new KeyFrame(new Duration(500),
-                    new KeyValue(loginRoot.prefHeightProperty(), 0, Interpolator.EASE_BOTH)),
+                        new KeyValue(loginBackground.translateYProperty(), 350, Interpolator.EASE_IN),
+                        new KeyValue(loginBackground.scaleYProperty(), 0, Interpolator.EASE_IN)),
                 new KeyFrame(new Duration(200),
-                    new KeyValue(loginPane.opacityProperty(), 0, Interpolator.EASE_IN))
+                        new KeyValue(loginPane.opacityProperty(), 0, Interpolator.EASE_IN))
         );
         closeLogin.setOnFinished(event -> {
             loginRoot.setVisible(false);
@@ -362,7 +359,7 @@ public class PaperchaseController  {
 
     @FXML
     private void toggleFullMap() {
-        if (!fullMapPane.isVisible()) {
+        if (fullMapPane.getOpacity() == 0) {
             toggleMenu();
             Timeline rotateToMap = new Timeline();
             rotateToMap.getKeyFrames().addAll(new KeyFrame(new Duration(1000),
@@ -372,9 +369,9 @@ public class PaperchaseController  {
             );
             rotateToMap.play();
             rotateToMap.setOnFinished(event -> {
-                fullMapPane.setVisible(true);
                 fullMapPane.setDisable(false);
-                statusBar.setVisible(false);
+                fadeIn(fullMapPane);
+                fadeOut(statusBar);
             });
         } else {
             Timeline rotateToOrigin = new Timeline();
@@ -384,9 +381,9 @@ public class PaperchaseController  {
                     new KeyValue(Main.root.layoutYProperty(), 100, Interpolator.EASE_BOTH))
             );
             rotateToOrigin.play();
-            fullMapPane.setVisible(false);
             fullMapPane.setDisable(true);
-            statusBar.setVisible(true);
+            fadeOut(fullMapPane);
+            fadeIn(statusBar);
         }
     }
 
@@ -394,6 +391,20 @@ public class PaperchaseController  {
         node.setOnKeyPressed(event -> {
             if (event.getCode() == KeyCode.ENTER) loginClicked();
         });
+    }
+
+    private void fadeIn(Node node) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(500), node);
+        fadeTransition.setFromValue(0);
+        fadeTransition.setToValue(1);
+        fadeTransition.play();
+    }
+
+    private void fadeOut(Node node) {
+        FadeTransition fadeTransition = new FadeTransition(Duration.millis(500), node);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.play();
     }
 
     @FXML
